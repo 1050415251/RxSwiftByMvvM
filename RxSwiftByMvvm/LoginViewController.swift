@@ -63,7 +63,8 @@ extension LoginViewController {
         let inputaccontObserVerable = accontTextField.rx.text
         let inputpasswordObserVerable = passwordTextField.rx.text
 
-
+      
+        
 
         /**
          Returns an observable sequence that **shares a single subscription to the underlying sequence**, and immediately upon subscription replays  elements in buffer.
@@ -102,7 +103,8 @@ extension LoginViewController {
         let accontobseque = inputaccontObserVerable.share(replay: 1).map {
             return $0!.count == 11
         }
-
+     
+        
         /// 返回一个可观察的序列 比如 输入的信号为 1，12，123 那么将这个信号转换为 false，false，false，具体可以根据业务需求来
         let passwordseque = inputpasswordObserVerable.share(replay: 1).map {
             return $0!.count == 6
