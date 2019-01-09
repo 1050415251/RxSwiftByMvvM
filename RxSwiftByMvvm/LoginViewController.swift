@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var loginstatusLab: UILabel!
+    @IBOutlet weak var msmlab: UILabel!
 
     lazy var vm = LoginViewmodel.init(vc: self)
 
