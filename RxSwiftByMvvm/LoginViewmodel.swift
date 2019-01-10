@@ -43,7 +43,7 @@ class LoginViewmodel: NSObject {
 
 
         //返回username和password组合后的元组流
-        let usernameAndPassword = Observable.combineLatest(accont.asObservable(), password.asObservable()) {
+        let _ = Observable.combineLatest(accont.asObservable(), password.asObservable()) {
             return ($0, $1)
             }.flatMapLatest { (arg0) -> Observable<Loginmodel> in
                 let (user, pass) = arg0
