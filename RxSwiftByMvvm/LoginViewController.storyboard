@@ -41,7 +41,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTe-Rt-CA0">
-                                <rect key="frame" x="135" y="306" width="42" height="21"/>
+                                <rect key="frame" x="135" y="306" width="158" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pb-7Q-DBX">
+                                <rect key="frame" x="90" y="440" width="165" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -55,12 +62,13 @@
                         <outlet property="accontTextField" destination="6tl-cK-4sR" id="fR1-ZO-5w1"/>
                         <outlet property="loginBtn" destination="hwg-9g-d1K" id="ZOW-PH-3gl"/>
                         <outlet property="loginstatusLab" destination="qTe-Rt-CA0" id="2CZ-1l-zbu"/>
+                        <outlet property="msmlab" destination="1pb-7Q-DBX" id="f53-co-5P0"/>
                         <outlet property="passwordTextField" destination="aUe-UX-GD6" id="sab-eR-nsg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bds-fn-xYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191" y="139"/>
+            <point key="canvasLocation" x="-191.19999999999999" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>

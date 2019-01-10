@@ -15,42 +15,82 @@ class LoginViewmodel: NSObject {
 
     var accont: Driver<String?>!
     var password: Driver<String?>!
+    
+    var msmcode: Driver<String>!
+    
+    let msmhaviorsubject = BehaviorSubject<String>.init(value: "")
+
 
     weak var ctr: LoginViewController!
 
     let client = NetClient()
+    
+    var counttime = 0
 
     convenience  init(vc: LoginViewController) {
         self.init()
         self.ctr = vc
+        setUpBindSignal()
     }
 
     override init() {
         super.init()
 
     }
+    
+    private func setUpBindSignal() {
+        accont = (ctr.accontTextField.rx.text).asDriver()
+        password = (ctr.passwordTextField.rx.text).asDriver()
+        
+       let _ = msmhaviorsubject.asDriver(onErrorJustReturn: "").drive(ctr.msmlab.rx.text)
+        
+    }
 
 
     func clicklogin() {
-        accont = (ctr.accontTextField.rx.text).asDriver()
-        password = (ctr.passwordTextField.rx.text).asDriver()
-
+       countdowntime()
 //        client.login(accont: accont, password: password).subscribe { (event) in
 //            if let login = event.element {
-//                ///可以做如下处理
+//                ///可以做处理
 //            }
 //        }
 
 
+
         //返回username和password组合后的元组流
+
         let _ = Observable.combineLatest(accont.asObservable(), password.asObservable()) {
             return ($0, $1)
             }.flatMapLatest { (arg0) -> Observable<Loginmodel> in
                 let (user, pass) = arg0
+                debugPrint("用户名:\(user!) 密码：\(pass!)")
                 return self.client.login(accont: user!, password: pass!)
-        }
-    
+            }.bind(to: ctr.finishbserver)
     }
+    
+    private func countdowntime() {
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+            self.counttime = self.counttime + 1
+            self.msmhaviorsubject.on(Event<String>.next("短信验证倒计时:\(self.counttime)"))
+            self.countdowntime()
+        }
+//
+//            msmcode = Observable<String>.create({ (event) -> Disposable in
+//
+//
+//
+//
+//                return Disposables.create {
+//
+//                }
+//            }).asDriver(onErrorJustReturn: "")
+//
+//            let _ = msmcode.drive(ctr.msmlab.rx.text)
+    }
+    
+  
 
 }
 
